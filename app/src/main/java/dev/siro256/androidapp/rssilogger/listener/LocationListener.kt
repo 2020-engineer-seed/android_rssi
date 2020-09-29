@@ -31,6 +31,8 @@ object LocationListener: LocationListener {
         val time = System.currentTimeMillis()
         //スキャンデータを保存
         wifiManager.scanResults.forEach {
+            if (!it.SSID.startsWith("ES_", true)
+                && !it.SSID.startsWith("elecom", true)) return@forEach
             MainActivity.tempMeasuredData!!.add(
                 MainActivity.MeasuredData(count, time,
                     location.latitude, location.longitude, it.SSID, it.level, it.frequency)
