@@ -44,10 +44,10 @@ object EndButtonListener: View.OnClickListener {
         //書き出す先のCSVを生成
         val csvFile = File(documentDir, "DataSet_${date}.csv")
         //ヘッダ
-        builder.append("SerialNumber,EpochTime,Latitude,Longitude,APName,RSSI")
+        builder.append("SerialNumber,EpochTime,Latitude,Longitude,APName,RSSI,Frequency")
         //計測データをStringBuilderに追加
         MainActivity.tempMeasuredData?.forEach {
-            builder.append(",\n${it.sn},${it.time},${it.latitude},${it.longitude},${it.apName},${it.rssi}")
+            builder.append(",\n${it.sn},${it.time},${it.latitude},${it.longitude},${it.apName},${it.rssi}, ${it.freq}")
         }
         //CSVに書き出す
         csvFile.writeText(builder.toString())

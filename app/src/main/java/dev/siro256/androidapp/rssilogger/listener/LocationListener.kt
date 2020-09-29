@@ -33,7 +33,7 @@ object LocationListener: LocationListener {
         wifiManager.scanResults.forEach {
             MainActivity.tempMeasuredData!!.add(
                 MainActivity.MeasuredData(count, time,
-                    location.latitude, location.longitude, it.SSID, it.level)
+                    location.latitude, location.longitude, it.SSID, it.level, it.frequency)
             )
             //画面のカウンターの更新
             MainActivity.instance.findViewById<TextView>(R.id.count).text = count.toString()

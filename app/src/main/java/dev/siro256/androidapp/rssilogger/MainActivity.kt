@@ -50,5 +50,5 @@ class MainActivity : AppCompatActivity() {
     }
 
     //計測データの保存用データクラス
-    data class MeasuredData(val sn: Int, val time: Long, val latitude: Double, val longitude: Double, val apName: String, val rssi: Int)
+    data class MeasuredData(val sn: Int, val time: Long, val latitude: Double, val longitude: Double, val apName: String, val rssi: Int, val freq: Int)
 }
