@@ -29,17 +29,24 @@ object LocationListener: LocationListener {
         if (wifiManager.scanResults.size == 0) return
         //現在時刻の取得
         val time = System.currentTimeMillis()
+        //確認用変数
+        var check = false
         //スキャンデータを保存
         wifiManager.scanResults.forEach {
             if (!it.SSID.startsWith("ES_", true)
                 && !it.SSID.startsWith("elecom", true)) return@forEach
+            check = true
             MainActivity.tempMeasuredData!!.add(
                 MainActivity.MeasuredData(count, time,
                     location.latitude, location.longitude, it.SSID, it.level, it.frequency)
             )
-            //画面のカウンターの更新
-            MainActivity.instance.findViewById<TextView>(R.id.count).text = count.toString()
         }
+        //APを記録していない場合return
+        if (!check) return
+
+        //画面のカウンターの更新
+        MainActivity.instance.findViewById<TextView>(R.id.count).text = count.toString()
+
         //カウンターの回数を増やす
         count ++
     }
